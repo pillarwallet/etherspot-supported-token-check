@@ -112,7 +112,7 @@ const fetchCrossChainTokens = async () => {
     {
       name: 'Ethereum',
       chainId: 1,
-      address: null,
+      address: '',
       symbol: 'ETH',
       decimals: 18,
       logoURI: 'https://tokens.1inch.exchange/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.png',
@@ -120,7 +120,7 @@ const fetchCrossChainTokens = async () => {
     {
       name: 'Matic',
       chainId: 137,
-      address: null,
+      address: '',
       symbol: 'MATIC',
       decimals: 18,
       logoURI: 'https://tokens.1inch.exchange/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0.png',
@@ -128,7 +128,7 @@ const fetchCrossChainTokens = async () => {
     {
       name: 'BNB',
       chainId: 56,
-      address: null,
+      address: '',
       symbol: 'BNB',
       decimals: 18,
       logoURI: 'https://tokens.1inch.exchange/0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.png',
@@ -136,7 +136,7 @@ const fetchCrossChainTokens = async () => {
     {
       name: 'xDAI',
       chainId: 100,
-      address: null,
+      address: '',
       symbol: 'xDAI',
       decimals: 18,
       logoURI: 'https://tokens.1inch.exchange/0x6b175474e89094c44da98b954eedeac495271d0f.png',
