@@ -108,7 +108,40 @@ const fetchCrossChainTokens = async () => {
     { networkName: NetworkNames.Xdai, tokenListName: null },
   ];
 
-  let crossChainTokens = [];
+  let crossChainTokens = [
+    {
+      name: 'Ethereum',
+      chainId: 1,
+      address: null,
+      symbol: 'ETH',
+      decimals: 18,
+      logoURI: 'https://tokens.1inch.exchange/0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.png',
+    },
+    {
+      name: 'Matic',
+      chainId: 137,
+      address: null,
+      symbol: 'MATIC',
+      decimals: 18,
+      logoURI: 'https://tokens.1inch.exchange/0x7d1afa7b718fb893db30a3abc0cfc608aacfebb0.png',
+    },
+    {
+      name: 'BNB',
+      chainId: 56,
+      address: null,
+      symbol: 'BNB',
+      decimals: 18,
+      logoURI: 'https://tokens.1inch.exchange/0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c.png',
+    },
+    {
+      name: 'xDAI',
+      chainId: 100,
+      address: null,
+      symbol: 'xDAI',
+      decimals: 18,
+      logoURI: 'https://tokens.1inch.exchange/0x6b175474e89094c44da98b954eedeac495271d0f.png',
+    }
+  ];
 
   await Promise.all(chains.map(async ({ networkName, tokenListName }) => {
     const chainInstance = new Sdk(privateKey, { env: EnvNames.MainNets, networkName });
@@ -146,8 +179,6 @@ const App = () => {
         || name.toUpperCase().includes(matchQuery)
     });
 
-  console.log('foundTokens: ', foundTokens)
-
   return (
     <Wrapper>
       <GlobalStyle />
@@ -155,7 +186,7 @@ const App = () => {
       {!!tokens?.length && (
         <>
           <Input placeholder="Enter token symbol, address or name" onChange={onChange} />
-          <InputHelperText>Tokens shown should match tokens in app</InputHelperText>
+          <InputHelperText>Tokens shown should match tokens in app. Refresh page to get latest.</InputHelperText>
         </>
       )}
       {foundTokens.map(({ name, address, decimals, logoURI, chainId }) => (
