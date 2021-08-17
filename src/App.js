@@ -102,9 +102,9 @@ const getTextColorByChainId = (chainId) => {
 const fetchCrossChainTokens = async () => {
   const privateKey = '0x1e3ab351be3514ccf4ce0d1409b9e169e58d6f9330a145d647b24a9d52562cf9'; // random
   const chains = [
-    { networkName: NetworkNames.Mainnet, tokenListName: null },
-    { networkName: NetworkNames.Matic, tokenListName: null },
-    { networkName: NetworkNames.Bsc, tokenListName: null },
+    { networkName: NetworkNames.Mainnet, tokenListName: 'PillarTokens' },
+    { networkName: NetworkNames.Matic, tokenListName: 'PillarTokens' },
+    { networkName: NetworkNames.Bsc, tokenListName: 'PillarTokens' },
     { networkName: NetworkNames.Xdai, tokenListName: null },
   ];
 
