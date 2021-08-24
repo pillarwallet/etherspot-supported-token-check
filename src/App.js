@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import { EnvNames, NetworkNames, Sdk } from 'etherspot'
+import { Wallet } from 'ethers'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -99,15 +100,16 @@ const getTextColorByChainId = (chainId) => {
   return '#000' // unidentified
 }
 
-const fetchCrossChainTokens = async () => {
-  const privateKey = '0x1e3ab351be3514ccf4ce0d1409b9e169e58d6f9330a145d647b24a9d52562cf9'; // random
-  const chains = [
-    { networkName: NetworkNames.Mainnet, tokenListName: 'PillarTokens' },
-    { networkName: NetworkNames.Matic, tokenListName: 'PillarTokens' },
-    { networkName: NetworkNames.Bsc, tokenListName: 'PillarTokens' },
-    { networkName: NetworkNames.Xdai, tokenListName: null },
-  ];
+const randomWalletPrivateKey = Wallet.createRandom().privateKey;
 
+const chains = [
+  { networkName: NetworkNames.Mainnet, tokenListName: 'PillarTokens' },
+  { networkName: NetworkNames.Matic, tokenListName: 'PillarTokens' },
+  { networkName: NetworkNames.Bsc, tokenListName: 'PillarTokens' },
+  { networkName: NetworkNames.Xdai, tokenListName: null },
+];
+
+const fetchCrossChainTokens = async () => {
   let crossChainTokens = [
     {
       name: 'Ethereum',
@@ -144,7 +146,7 @@ const fetchCrossChainTokens = async () => {
   ];
 
   await Promise.all(chains.map(async ({ networkName, tokenListName }) => {
-    const chainInstance = new Sdk(privateKey, { env: EnvNames.MainNets, networkName });
+    const chainInstance = new Sdk(randomWalletPrivateKey, { env: EnvNames.MainNets, networkName });
     const chainTokens = await chainInstance.getTokenListTokens({ name: tokenListName });
     crossChainTokens = [...crossChainTokens, ...chainTokens];
   }));
