@@ -77,6 +77,7 @@ const getChainNameById = (chainId) => {
   if (chainId === 137) return 'Polygon';
   if (chainId === 100) return 'xDai';
   if (chainId === 56) return 'Binance Smart Chain';
+  if (chainId === 43114) return 'Avalanche C-Chain';
 
   return 'Unidentified'
 }
@@ -87,6 +88,7 @@ const getBackgroundColorByChainId = (chainId) => {
   if (chainId === 137) return '#8247e5'; // polygon
   if (chainId === 100) return '#62a7a5'; // xdai
   if (chainId === 56) return '#f3ba2f'; // binance
+  if (chainId === 43114) return '#E84142' // avalanche
 
   return '#ddd' // unidentified
 }
@@ -96,6 +98,7 @@ const getTextColorByChainId = (chainId) => {
   if (chainId === 137) return '#fff'; // polygon
   if (chainId === 100) return '#fff'; // xdai
   if (chainId === 56) return '#000'; // binance
+  if (chainId === 43114) return '#fff' // avalanche
 
   return '#000' // unidentified
 }
@@ -107,6 +110,7 @@ const chains = [
   { networkName: NetworkNames.Matic, tokenListName: 'PillarTokens' },
   { networkName: NetworkNames.Bsc, tokenListName: 'PillarTokens' },
   { networkName: NetworkNames.Xdai, tokenListName: null },
+  { networkName: NetworkNames.Avalanche, tokenListName: 'PillarTokens' },
 ];
 
 const fetchCrossChainTokens = async () => {
@@ -142,6 +146,14 @@ const fetchCrossChainTokens = async () => {
       symbol: 'xDAI',
       decimals: 18,
       logoURI: 'https://tokens.1inch.exchange/0x6b175474e89094c44da98b954eedeac495271d0f.png',
+    },
+    {
+      name: 'AVAX',
+      chainId: 43114,
+      address: '',
+      symbol: 'AVAX',
+      decimals: 18,
+      logoURI: 'https://cryptologos.cc/logos/avalanche-avax-logo.png?v=022',
     }
   ];
 
